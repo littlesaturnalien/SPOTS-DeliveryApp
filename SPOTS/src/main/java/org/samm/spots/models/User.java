@@ -7,8 +7,12 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.Setter;
+import org.samm.spots.constants.ServerRole;
 
 @Entity
+@Getter @Setter
 @Table(name = "Tb_User")
 public class User {
     @Id
@@ -17,6 +21,10 @@ public class User {
     private String email;
 
     @Column(name = "contraseña")
-    @Max
     private String password;
+
+    private String phone;
+
+    private ServerRole role;
+
 }

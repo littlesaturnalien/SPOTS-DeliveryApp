@@ -20,7 +20,7 @@ public class FirebaseInitializer {
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setDatabaseUrl("https://spots-delivery-app.firebaseio.com/")
+                .setDatabaseUrl("https://firestore.googleapis.com/v1/projects/spots-delivery-app/databases/(default)/")
                 .build();
 
         if (FirebaseApp.getApps().isEmpty()) {

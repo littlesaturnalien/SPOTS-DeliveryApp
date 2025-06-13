@@ -1,20 +1,18 @@
-package org.samm.spots.firebase;
+package org.samm.spots.configs.firebase;
 
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import com.google.firebase.cloud.FirestoreClient;
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-@Service
+@Configuration
 public class FirebaseInitializer {
-    @PostConstruct
-    private void initFirestore() throws IOException {
+    @Bean
+    public FirebaseApp initFirestore() throws IOException {
         InputStream serviceAccount = getClass().getClassLoader().
                 getResourceAsStream("spots-google-services.json");
 
@@ -23,12 +21,6 @@ public class FirebaseInitializer {
                 .setDatabaseUrl("https://firestore.googleapis.com/v1/projects/spots-delivery-app/databases/(default)/")
                 .build();
 
-        if (FirebaseApp.getApps().isEmpty()) {
-            FirebaseApp.initializeApp(options);
-        }
-    }
-
-    public Firestore getFirestore() {
-        return FirestoreClient.getFirestore();
+        return FirebaseApp.initializeApp(options);
     }
 }

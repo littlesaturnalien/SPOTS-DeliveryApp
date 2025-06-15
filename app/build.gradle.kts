@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.amms.spots_frontend"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.amms.spots_frontend"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -74,4 +74,6 @@ dependencies {
 
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.material)
+    implementation(libs.coroutines)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
